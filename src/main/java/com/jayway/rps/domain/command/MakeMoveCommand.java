@@ -1,9 +1,9 @@
 package com.jayway.rps.domain.command;
 
-import java.util.UUID;
-
 import com.jayway.es.api.Command;
 import com.jayway.rps.domain.Move;
+
+import java.util.UUID;
 
 public class MakeMoveCommand implements Command {
 	public final UUID gameId;

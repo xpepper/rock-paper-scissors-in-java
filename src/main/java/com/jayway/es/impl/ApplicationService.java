@@ -1,11 +1,11 @@
 package com.jayway.es.impl;
 
-import java.util.List;
-
 import com.jayway.es.api.Command;
 import com.jayway.es.api.Event;
 import com.jayway.es.store.EventStore;
 import com.jayway.es.store.EventStream;
+
+import java.util.List;
 
 public class ApplicationService {
 	private final EventStore eventStore;

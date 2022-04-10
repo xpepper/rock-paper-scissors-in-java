@@ -1,10 +1,10 @@
 package com.jayway.es.impl;
 
+import com.jayway.es.api.Command;
+
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
-
-import com.jayway.es.api.Command;
 
 public class CommandHandlerLookup {
 	private Map<Class<? extends Command>, Class<?>> commandHandlers = new HashMap<Class<? extends Command>, Class<?>>();

@@ -1,14 +1,14 @@
 package com.jayway.rps.domain.game;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
-
 import com.jayway.rps.domain.Move;
 import com.jayway.rps.domain.event.GameCreatedEvent;
 import com.jayway.rps.domain.event.GameTiedEvent;
 import com.jayway.rps.domain.event.GameWonEvent;
 import com.jayway.rps.domain.event.MoveDecidedEvent;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 public class GamesProjection {
 	public static enum State {

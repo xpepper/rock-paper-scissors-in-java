@@ -1,24 +1,17 @@
 package com.jayway.rps.infra.rest;
 
-import java.util.UUID;
-
-import javax.ws.rs.FormParam;
-import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
-
 import com.jayway.es.impl.ApplicationService;
 import com.jayway.rps.domain.Move;
 import com.jayway.rps.domain.command.CreateGameCommand;
 import com.jayway.rps.domain.command.MakeMoveCommand;
 import com.jayway.rps.domain.game.GamesProjection;
 import com.jayway.rps.domain.game.GamesProjection.GameState;
+
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
+import java.util.UUID;
 
 @Path("games")
 public class RpsResource {

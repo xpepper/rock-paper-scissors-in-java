@@ -1,8 +1,8 @@
 package com.jayway.rps.domain.command;
 
-import java.util.UUID;
-
 import com.jayway.es.api.Command;
+
+import java.util.UUID;
 
 public class CreateGameCommand implements Command {
 	public final UUID gameId;

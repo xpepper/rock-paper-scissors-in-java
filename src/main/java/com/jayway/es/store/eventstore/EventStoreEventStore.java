@@ -1,28 +1,8 @@
 package com.jayway.es.store.eventstore;
 
-import java.io.Closeable;
-import java.io.IOException;
-import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
-import java.util.concurrent.TimeUnit;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import rx.Observable;
-import scala.concurrent.Future;
-import scala.concurrent.duration.Duration;
-import akka.actor.ActorRef;
-import akka.actor.ActorSystem;
-import akka.actor.Props;
-import akka.actor.Status;
-import akka.actor.UntypedActor;
+import akka.actor.*;
 import akka.event.Logging;
 import akka.event.LoggingAdapter;
-
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -32,22 +12,26 @@ import com.jayway.es.impl.Sneak;
 import com.jayway.es.store.EventStore;
 import com.jayway.es.store.EventStream;
 import com.jayway.es.store.ListEventStream;
-import com.jayway.rps.app.RpsConfig;
-
-import eventstore.EsException;
-import eventstore.EventData;
-import eventstore.EventNumber.Exact;
-import eventstore.IndexedEvent;
-import eventstore.Position;
-import eventstore.ReadStreamEventsCompleted;
-import eventstore.StreamNotFoundException;
-import eventstore.SubscriptionObserver;
-import eventstore.WriteEventsCompleted;
+import eventstore.*;
 import eventstore.j.EsConnection;
 import eventstore.j.EsConnectionFactory;
 import eventstore.j.EventDataBuilder;
 import eventstore.j.WriteEventsBuilder;
 import eventstore.tcp.ConnectionActor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import rx.Observable;
+import scala.concurrent.Future;
+import scala.concurrent.duration.Duration;
+
+import java.io.Closeable;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 public class EventStoreEventStore implements EventStore<Long> {
     private static final Logger logger = LoggerFactory.getLogger(EventStoreEventStore.class);

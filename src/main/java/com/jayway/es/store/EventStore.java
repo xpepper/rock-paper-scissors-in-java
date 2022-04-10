@@ -1,11 +1,10 @@
 package com.jayway.es.store;
 
-import java.util.List;
-import java.util.UUID;
-
+import com.jayway.es.api.Event;
 import rx.Observable;
 
-import com.jayway.es.api.Event;
+import java.util.List;
+import java.util.UUID;
 
 public interface EventStore<V> {
 	EventStream<Long> loadEventStream(UUID aggregateId);

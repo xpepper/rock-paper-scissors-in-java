@@ -1,9 +1,5 @@
 package com.jayway.rps.app;
 
-import org.glassfish.jersey.server.ResourceConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -14,6 +10,9 @@ import com.jayway.rps.domain.game.Game;
 import com.jayway.rps.domain.game.GamesProjection;
 import com.jayway.rps.infra.rest.HandleAllExceptions;
 import com.jayway.rps.infra.rest.RpsResource;
+import org.glassfish.jersey.server.ResourceConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class RpsConfig extends ResourceConfig {
     private static final Logger logger = LoggerFactory.getLogger(RpsConfig.class);
