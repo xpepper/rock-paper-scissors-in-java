@@ -25,13 +25,12 @@ public class Game {
 
     public List<Event> handle(CreateGameCommand c) {
         if (state != State.notInitialized) throw new IllegalStateException(state.toString());
-        return asList(
-            new GameCreatedEvent(c.gameId, c.playerEmail));
+        return List.of(new GameCreatedEvent(c.gameId, c.playerEmail));
     }
 
     public List<Event> handle(MakeMoveCommand c) {
         if (State.created == state) {
-            return asList(new MoveDecidedEvent(c.gameId, c.playerEmail, c.move));
+            return List.of(new MoveDecidedEvent(c.gameId, c.playerEmail, c.move));
         } else if (State.waiting == state) {
             if (player.equals(c.playerEmail)) throw new IllegalArgumentException("Player already in game");
             return asList(
@@ -39,16 +38,6 @@ public class Game {
                 makeEndGameEvent(c.gameId, c.playerEmail, c.move));
         } else {
             throw new IllegalStateException(state.toString());
-        }
-    }
-
-    private Event makeEndGameEvent(UUID gameId, String opponentEmail, Move opponentMove) {
-        if (move.defeats(opponentMove)) {
-            return new GameWonEvent(gameId, player, opponentEmail);
-        } else if (opponentMove.defeats(move)) {
-            return new GameWonEvent(gameId, opponentEmail, player);
-        } else {
-            return new GameTiedEvent(gameId);
         }
     }
 
@@ -70,5 +59,15 @@ public class Game {
 
     public void handle(GameTiedEvent e) {
         state = State.tied;
+    }
+
+    private Event makeEndGameEvent(UUID gameId, String opponentEmail, Move opponentMove) {
+        if (move.defeats(opponentMove)) {
+            return new GameWonEvent(gameId, player, opponentEmail);
+        } else if (opponentMove.defeats(move)) {
+            return new GameWonEvent(gameId, opponentEmail, player);
+        } else {
+            return new GameTiedEvent(gameId);
+        }
     }
 }
